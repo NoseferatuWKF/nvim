@@ -1,10 +1,11 @@
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+vim.g.mapleader = ' '
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -20,8 +21,9 @@ if not vim.loop.fs_stat(lazypath) then
   }
 end
 vim.opt.rtp:prepend(lazypath)
-require('lazy').setup('plugins')
-require("personal")
+require('lazy').setup('personal.plugins')
+
+require('personal')
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
@@ -31,6 +33,11 @@ require('telescope').setup {
       i = {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
+      },
+    },
+    layout_config = {
+      horizontal = {
+        preview_cutoff = 0,
       },
     },
   },
@@ -219,8 +226,6 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
-
-require("personal")
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
