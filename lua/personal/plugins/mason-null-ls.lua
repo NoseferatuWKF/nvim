@@ -5,7 +5,7 @@ return {
     "jose-elias-alvarez/null-ls.nvim",
   },
   init = function ()
-    ensure_installed = {
+    local ensure_installed = {
       "prettier",
       "stylua",
       "eslint",

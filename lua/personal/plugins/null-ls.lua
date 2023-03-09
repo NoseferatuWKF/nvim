@@ -5,7 +5,7 @@ return {
   },
   init = function()
     local null_ls = require("null-ls")
-    sources = {
+    local sources = {
       null_ls.builtins.formatting.prettier,
       null_ls.builtins.formatting.stylua,
       null_ls.builtins.diagnostics.eslint,
