@@ -19,6 +19,7 @@ return {
   "tpope/vim-surround",
   "windwp/nvim-ts-autotag",
   "christoomey/vim-tmux-navigator",
+  "ap/vim-buftabline",
   {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
