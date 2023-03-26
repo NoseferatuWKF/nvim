@@ -76,7 +76,3 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to prev error" 
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Hover error" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Error list" })
 
--- Buffer navigation
-vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = ":bnext"})
-vim.keymap.set("n", "<leader>bp", ":bprev<CR>", { desc = ":bprev"})
-vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { desc = ":bprev"})

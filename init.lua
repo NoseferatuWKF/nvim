@@ -23,8 +23,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("personal.plugins")
 
-require("personal")
-
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 require("telescope").setup {
@@ -111,7 +109,6 @@ require("nvim-treesitter.configs").setup {
     },
   },
 }
-
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
@@ -250,5 +247,6 @@ cmp.setup {
   },
 }
 
+require("personal")
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

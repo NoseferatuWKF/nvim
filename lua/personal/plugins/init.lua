@@ -108,6 +108,4 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
   },
-
-  { import = "personal.plugins" },
 }
