@@ -1,3 +1,4 @@
-require("personal.opt")
-require("personal.remap")
-
+return {
+  require("personal.opt"),
+  require("personal.remap"),
+}

@@ -29,7 +29,7 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- edit config from anywhere while in vim
-vim.keymap.set("n", "<leader>con", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/personal/init.lua<CR>", { desc = "Edit Neovim config"})
+vim.keymap.set("n", "<leader>con", "<cmd>e ~/.dotfiles/nvim/.config/nvim/init.lua<CR>", { desc = "Edit Neovim config"})
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
