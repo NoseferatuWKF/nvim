@@ -1,4 +1,6 @@
 # Neovim init.lua
 
 ## TODO
-- manage plugins from kickstart
+- [x] housekeeping
+- [ ] git remaps
+- [ ] snippets
