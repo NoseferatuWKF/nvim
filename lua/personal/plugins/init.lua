@@ -10,7 +10,6 @@ return {
   "tpope/vim-sleuth",
 
   -- Aesthetics
-  "folke/zen-mode.nvim",
   "nvim-tree/nvim-web-devicons",
 
   -- Utils
@@ -18,6 +17,7 @@ return {
   "windwp/nvim-ts-autotag",
   "christoomey/vim-tmux-navigator",
   "ap/vim-buftabline",
+  "mbbill/undotree",
 
   { "windwp/nvim-autopairs", opts = {} },
   -- "gc" to comment visual regions/lines

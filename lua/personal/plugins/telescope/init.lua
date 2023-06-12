@@ -3,14 +3,17 @@ return {
   { "nvim-telescope/telescope.nvim",
     version = "*",
     dependencies = { "nvim-lua/plenary.nvim" },
+    init = function ()
+      require("personal.plugins.telescope.remap")
+    end,
     opts = {
       defaults = {
-        mappings = {
-          i = {
-            ["<C-u>"] = false,
-            ["<C-d>"] = false,
-          },
-        },
+        -- mappings = {
+          -- i = {
+            -- ["<C-u>"] = false,
+            -- ["<C-d>"] = false,
+          -- },
+        -- },
         layout_config = {
           horizontal = {
             preview_cutoff = 0,

@@ -2,5 +2,5 @@
 
 ## TODO
 - [x] housekeeping
-- [ ] git remaps
+- [x] git remaps
 - [ ] snippets

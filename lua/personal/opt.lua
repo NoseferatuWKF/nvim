@@ -38,6 +38,15 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
-vim.opt.isfname:append("@-@")
 
-vim.o.cursorline = true;
+vim.o.cursorline = true
+
+vim.o.laststatus = 3
+
+-- Diagnostic signcolumn
+-- set signcolumn=auto:4 to avoid adding stuff on top of each other refer :h signcolumn
+local signs = {Error = '', Warn = '', Info = '', Hint = '󰌵',}
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl })
+end

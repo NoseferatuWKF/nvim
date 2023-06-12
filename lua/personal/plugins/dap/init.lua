@@ -5,10 +5,8 @@ return {
     dependencies = {
       "mfussenegger/nvim-dap"
     },
-    config = function ()
-      require("personal.plugins.dap.remap")
-    end,
     init = function()
+      require("personal.plugins.dap.remap")
       require("dapui").setup()
       local dap, dapui = require("dap"), require("dapui")
       dap.listeners.after.event_initialized["dapui_config"] = function()
