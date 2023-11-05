@@ -8,12 +8,9 @@ return {
     end,
     opts = {
       defaults = {
-        -- mappings = {
-          -- i = {
-            -- ["<C-u>"] = false,
-            -- ["<C-d>"] = false,
-          -- },
-        -- },
+        path_display = {
+          truncate = 3,
+        },
         layout_config = {
           horizontal = {
             preview_cutoff = 0,

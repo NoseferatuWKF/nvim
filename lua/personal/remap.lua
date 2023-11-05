@@ -15,7 +15,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], { desc = "Yank into system clipboard"})
+-- vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], { desc = "Yank into system clipboard"})
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Immutable Paste"})
 vim.keymap.set("n", "Q", "<nop>")
 -- replace word on cursor
@@ -29,7 +29,9 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- edit config from anywhere while in vim
-vim.keymap.set("n", "<leader>con", "<cmd>e ~/.dotfiles/nvim/.config/nvim/init.lua<CR>", { desc = "Edit Neovim config"})
+vim.keymap.set("n", "<leader>con", function()
+  vim.cmd.edit("~/.dotfiles/nvim/.config/nvim/init.lua")
+end, { desc = "Edit Neovim [CON]fig"})
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -43,7 +45,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to next error" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to prev error" })
+vim.keymap.set("n", "[e", vim.diagnostic.goto_prev, { desc = "Go to next error" })
+vim.keymap.set("n", "]e", vim.diagnostic.goto_next, { desc = "Go to prev error" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Hover error" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Error list" })

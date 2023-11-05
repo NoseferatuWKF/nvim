@@ -32,14 +32,15 @@ return {
             -- clangd = {},
             -- gopls = {},
             -- pyright = {},
-            rust_analyzer = {},
+            -- rust_analyzer = {},
             -- tsserver = {},
-            lua_ls = {
-              Lua = {
-                workspace = { checkThirdParty = false },
-                telemetry = { enable = false },
-              },
-            },
+            -- jdtls = {},
+            -- lua_ls = {
+            --   Lua = {
+            --     workspace = { checkThirdParty = false },
+            --     telemetry = { enable = false },
+            --   },
+            -- },
           }
 
           -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
@@ -63,12 +64,6 @@ return {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 settings = servers[server_name],
-              }
-              lspconfig.jdtls.setup {
-                capabilities = capabilities,
-                on_attach = on_attach,
-                settings = servers.jdtls,
-                root_dir = lspconfig.util.root_pattern('.git')
               }
             end,
           }

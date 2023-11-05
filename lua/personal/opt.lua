@@ -5,9 +5,8 @@ vim.o.hlsearch = false
 -- Make line numbers default
 vim.wo.number = true
 vim.wo.relativenumber = true
--- Remove end of buffer tilde
-vim.o.tabstop = 4
 -- Indentation
+vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
@@ -38,9 +37,9 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
-
+-- Show horizontal line on cursor so that you are not lost
 vim.o.cursorline = true
-
+-- Single status line for all splits
 vim.o.laststatus = 3
 
 -- Diagnostic signcolumn
@@ -50,3 +49,38 @@ for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl })
 end
+
+-- Hover float windows borders
+-- h nvim_open_win
+local _border = "rounded"
+
+-- h lsp
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = _border
+  }
+)
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+  vim.lsp.handlers.signature_help, {
+    border = _border
+  }
+)
+
+-- h vim.diagnostic.config()
+vim.diagnostic.config({
+  float = { border = _border }
+})
+
+-- h lspconfig-highlight
+require("lspconfig.ui.windows").default_options.border = _border
+
+-- h mason-settings
+require("mason").setup({
+    ui = {
+        border = _border
+    }
+})
+
+--  h lazy.nvim-lazy.nvim-configuration
+require("lazy.core.config").defaults.ui.border = _border

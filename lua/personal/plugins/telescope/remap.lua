@@ -15,6 +15,7 @@ vim.keymap.set("n", "<leader>gf", require("telescope.builtin").git_files, { desc
 vim.keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
 vim.keymap.set("n", "<leader>sw", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
 vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
+vim.keymap.set("n", "<leader>sm", require("telescope.builtin").marks, { desc = "[S]earch [M]arks" })
 vim.keymap.set("n", "<leader>gg", function ()
   -- https://www.reddit.com/r/neovim/comments/106oz66/comment/j3imi3v/
   local git_dir = vim.fn.system(string.format("git -C %s rev-parse --show-toplevel", vim.fn.expand("%:p:h")))
