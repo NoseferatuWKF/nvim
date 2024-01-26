@@ -55,7 +55,7 @@ return {
   {
     "NoseferatuWKF/dijon.nvim",
     opts = {
-      vault = "/home/noseferatu/athena",
-    }
+      vault = "C:/Users/Wan.WanAhmed/Documents/athena",
+    },
   },
 }

@@ -18,6 +18,19 @@ return {
             preview_width = 0.75,
           },
         },
+        file_ignore_patterns = {
+          -- "App_Config",
+          -- "picklesdoc",
+          -- "Images",
+          -- "lib",
+          -- "Styles",
+          -- "*.zip",
+          -- "*.gif",
+          -- "*.svg",
+          -- "*.csv",
+          -- "*.ttf",
+          -- "XeroCertificate",
+        },
       },
       config = function()
         -- Enable telescope fzf native, if installed

@@ -9,7 +9,10 @@ return {
       "williamboman/mason.nvim",
       {
         "williamboman/mason-lspconfig.nvim",
-        dependencies = { "hrsh7th/cmp-nvim-lsp" },
+        dependencies = { 
+          "hrsh7th/cmp-nvim-lsp",
+          "Hoffs/omnisharp-extended-lsp.nvim",
+        },
         config = function ()
           -- LSP settings.
           -- This function gets run when an LSP connects to a particular buffer.
@@ -69,6 +72,23 @@ return {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 settings = servers[server_name],
+              }
+
+              -- local omnisharp_exe = "C:/Users/Wan.WanAhmed/AppData/Local/nvim-data/mason/packages/omnisharp/libexec/Omnisharp.exe"
+              local omnisharp_exe = "C:/omnisharp/Omnisharp.exe"
+              local pid = vim.fn.getpid()
+              lspconfig.omnisharp.setup {
+                handlers = {
+                  ["textDocument/definition"] = require('omnisharp_extended').handler,
+                },
+                capabilities = capabilities,
+                on_attach = function (client, bufnr)
+                  local fidget = require("fidget")
+                  fidget.notify(" Finished setting up Omnisharp")
+                  on_attach(client, bufnr)
+                end,
+                root_dir = lspconfig.util.find_git_ancestor,
+                cmd = { omnisharp_exe, "--languageserver", '--hostPID', tostring(pid) },
               }
             end,
           }

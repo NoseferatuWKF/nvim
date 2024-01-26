@@ -59,7 +59,7 @@ vim.keymap.set("t", "<esc>", "<C-\\><C-n>")
 
 -- edit config from anywhere while in vim
 vim.keymap.set("n", "<leader>con", function()
-  vim.cmd.edit("~/.dotfiles/nvim/.config/nvim/init.lua")
+  vim.cmd.edit("~/AppData/Local/nvim/init.lua")
 end, { desc = "Edit Neovim [CON]fig"})
 
 -- [[ Highlight on yank ]]
