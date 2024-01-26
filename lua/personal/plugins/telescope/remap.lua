@@ -1,8 +1,16 @@
 -- Telescope
 -- See `:help telescope.builtin`
-local compact = require("telescope.themes").get_dropdown({ previewer = false })
+local compact = require("telescope.themes").get_dropdown({
+  previewer = false,
+  layout_config = {
+    width = 0.8,
+    height = 0.8,
+  }
+})
 
-vim.keymap.set("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
+vim.keymap.set("n", "<leader><space>", function()
+  require("telescope.builtin").buffers(compact)
+end, { desc = "[?] Find recently opened files" })
 
 vim.keymap.set("n", "<leader>?", function()
   require("telescope.builtin").oldfiles(compact)

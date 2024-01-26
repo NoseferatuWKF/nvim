@@ -11,7 +11,14 @@ return {
   "nvim-lua/plenary.nvim",
   "tpope/vim-surround",
   "christoomey/vim-tmux-navigator",
-  "ap/vim-buftabline",
+  
+  -- show buffers as tabs
+  { "ap/vim-buftabline",
+    config = function()
+      vim.g.buftabline_numbers = 1
+    end
+  },
+
   -- Detect tabstop and shiftwidth automatically
   "tpope/vim-sleuth",
 
@@ -19,12 +26,6 @@ return {
 
   -- "gc" to comment visual regions/lines
   { "numToStr/Comment.nvim", opts = {} },
-
-  -- Useful plugin to show you pending keybinds.
-  { "folke/which-key.nvim",
-    event = "VeryLazy",
-    opts = {},
-  }, 
 
   { "mbbill/undotree",
     config = function()
@@ -49,6 +50,6 @@ return {
     "NoseferatuWKF/dijon.nvim",
     opts = {
       vault = "/home/noseferatu/athena",
-    }
+    },
   },
 }
