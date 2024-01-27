@@ -69,36 +69,6 @@ return {
           }
         end
       },
-      {
-        "jose-elias-alvarez/null-ls.nvim",
-        dependencies = {
-          "nvim-lua/plenary.nvim"
-        },
-        init = function()
-          local null_ls = require("null-ls")
-          local sources = {
-            null_ls.builtins.formatting.prettier,
-            null_ls.builtins.formatting.stylua,
-            null_ls.builtins.diagnostics.eslint,
-            null_ls.builtins.completion.spell,
-          }
-        end,
-      },
-      {
-        "jay-babu/mason-null-ls.nvim",
-        dependencies = {
-          "williamboman/mason.nvim",
-          "jose-elias-alvarez/null-ls.nvim",
-        },
-        init = function ()
-          local ensure_installed = {
-            "prettier",
-            "stylua",
-            "eslint",
-          }
-        end,
-      },
-
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require("fidget").setup({})`
       { "j-hui/fidget.nvim", opts = {}, tag = "legacy" },
