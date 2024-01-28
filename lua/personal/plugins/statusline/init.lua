@@ -1,7 +1,7 @@
 return {
-  "tjdevries/express_line.nvim",
-  dependencies = {
     "NoseferatuWKF/neoline.nvim",
+  dependencies = {
+    "tjdevries/express_line.nvim",
   },
   config = function()
     local builtin = require("el.builtin")

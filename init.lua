@@ -4,8 +4,6 @@
 vim.g.maplocalleader = " "
 vim.g.mapleader = " "
 
-vim.g.netrw_banner = 0
-
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -18,7 +16,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("personal.plugins")
+require("lazy").setup("personal.plugins", {
+  ui = {
+    border = "single"
+  }
+})
 
 require("personal")
 -- The line beneath this is called `modeline`. See `:help modeline`

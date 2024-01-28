@@ -1,7 +1,10 @@
 -- [[ Basic Keymaps ]]
 
 -- Netrw
-vim.keymap.set("n", "<leader>nt", vim.cmd.Ex, { desc = "Netrw" })
+vim.keymap.set("n", "<leader>nt", vim.cmd.Ex, { desc = "[N]e[T]rw" })
+
+-- UndoTree
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "[U]ndo [T]ree"})
 
 -- Notorious keybinds from ThePrimeagen
 -- moving lines
@@ -49,3 +52,4 @@ vim.keymap.set("n", "[e", vim.diagnostic.goto_prev, { desc = "Go to next error" 
 vim.keymap.set("n", "]e", vim.diagnostic.goto_next, { desc = "Go to prev error" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Hover error" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Error list" })
+

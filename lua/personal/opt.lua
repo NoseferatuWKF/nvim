@@ -31,6 +31,7 @@ vim.o.smartcase = true
 vim.wo.signcolumn = 'yes'
 -- Decrease update time
 vim.o.updatetime = 50
+-- this is used by whichkey
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 -- Set completeopt to have a better completion experience
@@ -49,6 +50,8 @@ for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl })
 end
+
+vim.g.netrw_banner = 0
 
 -- Hover float windows borders
 -- h nvim_open_win
@@ -71,16 +74,3 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
 vim.diagnostic.config({
   float = { border = _border }
 })
-
--- h lspconfig-highlight
-require("lspconfig.ui.windows").default_options.border = _border
-
--- h mason-settings
-require("mason").setup({
-    ui = {
-        border = _border
-    }
-})
-
---  h lazy.nvim-lazy.nvim-configuration
-require("lazy.core.config").defaults.ui.border = _border

@@ -48,10 +48,17 @@ return {
           capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
           -- Setup mason so it can manage external tooling
-          require("mason").setup()
+          require("mason").setup({
+            ui = {
+              border = "rounded"
+            }
+          })
 
           -- Ensure the servers above are installed
           local mason_lspconfig = require("mason-lspconfig")
+
+          -- h lspconfig-highlight
+          require("lspconfig.ui.windows").default_options.border = "rounded"
 
           mason_lspconfig.setup {
             ensure_installed = vim.tbl_keys(servers),
@@ -71,7 +78,13 @@ return {
       },
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require("fidget").setup({})`
-      { "j-hui/fidget.nvim", opts = {}, tag = "legacy" },
+      { "j-hui/fidget.nvim", opts = {
+        progress = {
+          display = {
+            done_icon = "",
+          },
+        }
+      }},
 
       -- Additional lua configuration, makes nvim stuff amazing!
       {"folke/neodev.nvim", opts = {} },

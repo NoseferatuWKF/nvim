@@ -4,13 +4,18 @@ return {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
+      "windwp/nvim-ts-autotag",
     },
     config = function()
       -- [[ Configure Treesitter ]]
       -- See `:help nvim-treesitter`
       require("nvim-treesitter.configs").setup {
         -- Add languages to be installed here that you want installed for treesitter
-        ensure_installed = { "c", "cpp", "c_sharp", "go", "lua", "python", "rust", "tsx", "typescript", "vim", "java" },
+        ensure_installed = { "c", "cpp", "c_sharp", "go", "lua", "python", "rust", "tsx", "typescript", "vim", "java", "html" },
+
+        autotag = {
+          enable = true
+        },
 
         -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
         auto_install = false,
@@ -74,7 +79,5 @@ return {
       pcall(require("nvim-treesitter.install").update { with_sync = true })
     end,
   },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-  },
+  "nvim-treesitter/nvim-treesitter-context",
 }

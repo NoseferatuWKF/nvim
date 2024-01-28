@@ -14,16 +14,26 @@ return {
 
   -- Utils
   "tpope/vim-surround",
-  "windwp/nvim-ts-autotag",
   "christoomey/vim-tmux-navigator",
   "ap/vim-buftabline",
-  "mbbill/undotree",
 
   { "windwp/nvim-autopairs", opts = {} },
+
   -- "gc" to comment visual regions/lines
   { "numToStr/Comment.nvim", opts = {} },
+
   -- Useful plugin to show you pending keybinds.
-  { "folke/which-key.nvim",  opts = {} },
+  { "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {},
+  }, 
+
+  { "mbbill/undotree",
+    config = function()
+      vim.g.undotree_WindowLayout = 2
+      vim.g.undotree_SetFocusWhenToggle = 1
+    end,
+  },
 
   {
     -- Add indentation guides even on blank lines
@@ -35,4 +45,11 @@ return {
     },
   },
 
+  -- DIY plugins
+  {
+    "NoseferatuWKF/dijon.nvim",
+    opts = {
+      vault = "/home/noseferatu/athena",
+    },
+  },
 }
