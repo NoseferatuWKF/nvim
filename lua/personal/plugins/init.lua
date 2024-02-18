@@ -4,18 +4,16 @@
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 return {
-  "nvim-lua/plenary.nvim",
-
-  -- Detect tabstop and shiftwidth automatically
-  "tpope/vim-sleuth",
-
   -- Aesthetics
   "nvim-tree/nvim-web-devicons",
 
   -- Utils
+  "nvim-lua/plenary.nvim",
   "tpope/vim-surround",
   "christoomey/vim-tmux-navigator",
   "ap/vim-buftabline",
+  -- Detect tabstop and shiftwidth automatically
+  "tpope/vim-sleuth",
 
   { "windwp/nvim-autopairs", opts = {} },
 
@@ -32,6 +30,7 @@ return {
     config = function()
       vim.g.undotree_WindowLayout = 2
       vim.g.undotree_SetFocusWhenToggle = 1
+      vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "[U]ndo [T]ree" })
     end,
   },
 
@@ -50,6 +49,6 @@ return {
     "NoseferatuWKF/dijon.nvim",
     opts = {
       vault = "/home/noseferatu/athena",
-    },
+    }
   },
 }

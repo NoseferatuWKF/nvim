@@ -12,11 +12,9 @@ return {
         dependencies = { "hrsh7th/cmp-nvim-lsp" },
         config = function ()
           -- LSP settings.
-          --  This function gets run when an LSP connects to a particular buffer.
+          -- This function gets run when an LSP connects to a particular buffer.
           local on_attach = function(_, bufnr)
-
             require("personal.plugins.lsp.remap")
-
             -- Create a command `:Format` local to the LSP buffer
             vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
               vim.lsp.buf.format()

@@ -1,7 +1,8 @@
 return {
-    "NoseferatuWKF/neoline.nvim",
-  dependencies = {
     "tjdevries/express_line.nvim",
+  dependencies = {
+    "NoseferatuWKF/neoline.nvim",
+    "lewis6991/gitsigns.nvim",
   },
   config = function()
     local builtin = require("el.builtin")
@@ -9,24 +10,8 @@ return {
     local neoline = require("neoline")
 
     require("el").setup {
-
-      -- disable statusline on these windows
-      -- regenerate_autocmds = { "WinEnter", "WinLeave" },
       generator = function(_, buffer)
-        -- local is_inactive = vim.o.laststatus ~= 3 and window.win_id ~= vim.api.nvim_get_current_win()
-
-        local is_inactive = false
-        if not is_inactive then
-          for _, ft in ipairs({
-            "fugitive",
-            "fugitiveblame",
-          }) do
-            if vim.bo[buffer.bufnr].ft == ft then
-              is_inactive = true
-            end
-          end
-        end
-
+        -- see :highlight
         local highlights = {
           magenta = neoline.extract_hl({
             bg = { ["StatusLine"] = "bg" },
@@ -69,16 +54,12 @@ return {
         local components = {
           { neoline.mode { modes = modes, fmt = " %s %s ", icon = "󰻽", hl_icon_only = false } },
           { neoline.git_branch { fmt = " %s %s ", icon = "", hl = highlights.yellow } },
-          { neoline.git_changes_buf {
+          { neoline.git_changes {
             fmt = "|%s|",
             icon_insert = "+",
             icon_change = "~",
             icon_delete = "-",
-            hl_insert = neoline.extract_hl({
-              bg = { ["StatusLine"] = "bg" },
-              fg = { ["DiffAdd"] = "fg" },
-              bold = true,
-            }),
+            hl_insert = { highlights.green },
             hl_change = neoline.extract_hl({
               bg = { ["StatusLine"] = "bg" },
               fg = { ["DiffChange"] = "fg" },
@@ -90,11 +71,11 @@ return {
               bold = true,
             }),
           }},
-          { sections.split, required = true },
+          { sections.split },
           { neoline.file_icon { fmt = "%s ", hl_icon = true } },
-          { sections.maximum_width(builtin.file_relative, 0.25), required = true },
+          { sections.maximum_width(builtin.file_relative, 0.25) },
           { sections.collapse_builtin { { " " }, { builtin.modified_flag } } },
-          { sections.split, required = true },
+          { sections.split },
           { neoline.diagnostics {
             fmt = "|%s|", lsp = true,
             hl_err = neoline.extract_hl({
@@ -122,21 +103,13 @@ return {
           { neoline.line_number { modes = modes, ln = builtin.line, col = builtin.column, fmt = " %s:%s " }},
         }
 
-        local add_item = function(result, item)
-          if is_inactive and not item.required then
-            return
-          end
-
+        local result = {}
+        for _, item in ipairs(components) do
           table.insert(result, item)
         end
 
-        local result = {}
-        for _, item in ipairs(components) do
-          add_item(result, item)
-        end
-
         return result
-      end,
+      end
     }
   end
 }

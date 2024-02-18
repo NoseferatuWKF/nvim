@@ -1,4 +1,12 @@
 -- [[ Setting options ]]
+
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+vim.g.maplocalleader = " "
+vim.g.mapleader = " "
+
+vim.g.netrw_banner = 0
 -- See `:help vim.o`
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -51,7 +59,13 @@ for type, icon in pairs(signs) do
     vim.fn.sign_define(hl, { text = icon, texthl = hl })
 end
 
-vim.g.netrw_banner = 0
+vim.api.nvim_create_autocmd({"TermOpen"}, {
+  callback = function()
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+    vim.cmd.startinsert()
+  end
+})
 
 -- Hover float windows borders
 -- h nvim_open_win

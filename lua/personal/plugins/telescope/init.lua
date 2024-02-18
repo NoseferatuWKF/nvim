@@ -11,9 +11,11 @@ return {
         path_display = {
           truncate = 3,
         },
+        layout_strategy = "flex",
         layout_config = {
           horizontal = {
             preview_cutoff = 0,
+            preview_width = 0.75,
           },
         },
       },
