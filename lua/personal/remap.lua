@@ -1,11 +1,36 @@
 -- Netrw
 vim.keymap.set("n", "<leader>nt", vim.cmd.Ex, { desc = "[N]e[T]rw" })
 
--- Notorious keybinds from ThePrimeagen
--- moving lines
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+-- Buffers
+vim.keymap.set("n", "<C-x>", vim.cmd.bd)
+vim.keymap.set("n", "<C-n>", function()
+  if vim.v.count > 0 then
+    return vim.cmd.b(vim.v.count)
+  else
+    return vim.cmd.bn()
+  end
+end, { desc = "[N]ext buffer" })
 
+vim.keymap.set("n", "<C-p>", function()
+  if vim.v.count > 0 then
+    return vim.cmd.b(vim.v.count)
+  else
+    return vim.cmd.bp()
+  end
+end, { desc = "[P]rev buffer" })
+
+-- moving lines
+vim.keymap.set("v", "J", function()
+  local i = vim.v.count > 0 and vim.v.count or 1
+  return "m`" .. ":m '>+" .. i .. "<CR>gv=gv"
+end, { expr = true })
+
+vim.keymap.set("v", "K", function()
+  local i = vim.v.count > 0 and vim.v.count + 1 or 2
+  return "m`" .. ":m '<-" .. i .. "<CR>gv=gv"
+end, { expr = true })
+
+-- Notorious keybinds from ThePrimeagen
 -- removing disorientation
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -18,9 +43,9 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Immutable Paste"})
 vim.keymap.set("n", "Q", "<nop>")
 
 -- replace word on cursor
-vim.keymap.set("n", "<leader>sg", [[:1, . s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - Upwards" })
+vim.keymap.set("n", "<leader>sU", [[:1, . s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - Upwards" })
 vim.keymap.set("n", "<leader>ss", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - All" })
-vim.keymap.set("n", "<leader>sG", [[:., $ s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - Downwards" })
+vim.keymap.set("n", "<leader>sD", [[:., $ s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - Downwards" })
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`

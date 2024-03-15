@@ -2,8 +2,6 @@
 -- See `:help telescope.builtin`
 local compact = require("telescope.themes").get_dropdown({ previewer = false })
 
-vim.keymap.set("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
-
 vim.keymap.set("n", "<leader>?", function()
   require("telescope.builtin").oldfiles(compact)
 end, { desc = "[?] Find recently opened files" })
