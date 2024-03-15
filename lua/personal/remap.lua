@@ -30,6 +30,11 @@ vim.keymap.set("v", "K", function()
   return "m`" .. ":m '<-" .. i .. "<CR>gv=gv"
 end, { expr = true })
 
+-- replace word on cursor
+vim.keymap.set("n", "<leader>sU", [[:1, . s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - Upwards" })
+vim.keymap.set("n", "<leader>ss", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - All" })
+vim.keymap.set("n", "<leader>sD", [[:., $ s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - Downwards" })
+
 -- Notorious keybinds from ThePrimeagen
 -- removing disorientation
 vim.keymap.set("n", "J", "mzJ`z")
@@ -41,11 +46,6 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], { desc = "Yank into system clipboard"})
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Immutable Paste"})
 vim.keymap.set("n", "Q", "<nop>")
-
--- replace word on cursor
-vim.keymap.set("n", "<leader>sU", [[:1, . s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - Upwards" })
-vim.keymap.set("n", "<leader>ss", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - All" })
-vim.keymap.set("n", "<leader>sD", [[:., $ s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - Downwards" })
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
