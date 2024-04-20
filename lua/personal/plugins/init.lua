@@ -27,12 +27,6 @@ return {
   -- "gc" to comment visual regions/lines
   { "numToStr/Comment.nvim", opts = {} },
 
-  -- Useful plugin to show you pending keybinds.
-  { "folke/which-key.nvim",
-    event = "VeryLazy",
-    opts = {},
-  }, 
-
   { "mbbill/undotree",
     config = function()
       vim.g.undotree_WindowLayout = 2

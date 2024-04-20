@@ -1,7 +1,7 @@
 return {
-  "tjdevries/express_line.nvim",
+  "NoseferatuWKF/neoline.nvim",
   dependencies = {
-    "NoseferatuWKF/neoline.nvim",
+    "tjdevries/express_line.nvim",
     "lewis6991/gitsigns.nvim",
     "nvim-tree/nvim-web-devicons",
   },
