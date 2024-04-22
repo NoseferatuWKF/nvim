@@ -39,7 +39,6 @@ vim.o.smartcase = true
 vim.wo.signcolumn = 'yes'
 -- Decrease update time
 vim.o.updatetime = 50
--- this is used by whichkey
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 -- Set completeopt to have a better completion experience
@@ -83,6 +82,27 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
     border = _border
   }
 )
+
+-- [[ Highlight on yank ]]
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = "*",
+})
+
+-- Microsoft XD
+local bom_group = vim.api.nvim_create_augroup("BOM", { clear = true })
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    vim.opt.bomb = true
+  end,
+  group = bom_group,
+  pattern = {"*.cshtml", "*.aspx", "*.ascx", "*.csproj"},
+})
 
 -- h vim.diagnostic.config()
 vim.diagnostic.config({

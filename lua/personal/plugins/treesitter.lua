@@ -1,25 +1,18 @@
 return {
+  "nvim-treesitter/nvim-treesitter-context",
   {
-    -- Highlight, edit, and navigate code
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
       "windwp/nvim-ts-autotag",
     },
     config = function()
-      -- [[ Configure Treesitter ]]
-      -- See `:help nvim-treesitter`
       require("nvim-treesitter.configs").setup {
-        -- Add languages to be installed here that you want installed for treesitter
         ensure_installed = { "c", "cpp", "c_sharp", "go", "lua", "python", "rust", "tsx", "typescript", "vim", "java", "html" },
-
         autotag = {
           enable = true
         },
-
-        -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
         auto_install = false,
-
         highlight = { enable = true },
         indent = { enable = true, disable = { "python" } },
         incremental_selection = {
@@ -34,9 +27,8 @@ return {
         textobjects = {
           select = {
             enable = true,
-            lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+            lookahead = true,
             keymaps = {
-              -- You can use the capture groups defined in textobjects.scm
               ["aa"] = "@parameter.outer",
               ["ia"] = "@parameter.inner",
               ["af"] = "@function.outer",
@@ -47,7 +39,7 @@ return {
           },
           move = {
             enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
+            set_jumps = true,
             goto_next_start = {
               ["]m"] = "@function.outer",
               ["]]"] = "@class.outer",
@@ -79,5 +71,4 @@ return {
       pcall(require("nvim-treesitter.install").update { with_sync = true })
     end,
   },
-  "nvim-treesitter/nvim-treesitter-context",
 }

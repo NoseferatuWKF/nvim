@@ -31,9 +31,9 @@ vim.keymap.set("v", "K", function()
 end, { expr = true })
 
 -- replace word on cursor
-vim.keymap.set("n", "<leader>sU", [[:1, . s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - Upwards" })
-vim.keymap.set("n", "<leader>ss", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - All" })
-vim.keymap.set("n", "<leader>sD", [[:., $ s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - Downwards" })
+vim.keymap.set("n", "<leader>ru", [[:1, . s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - Upwards" })
+vim.keymap.set("n", "<leader>rr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - All" })
+vim.keymap.set("n", "<leader>rd", [[:., $ s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - Downwards" })
 
 -- Notorious keybinds from ThePrimeagen
 -- removing disorientation
@@ -61,17 +61,6 @@ vim.keymap.set("t", "<esc>", "<C-\\><C-n>")
 vim.keymap.set("n", "<leader>con", function()
   vim.cmd.edit("~/AppData/Local/nvim/init.lua")
 end, { desc = "Edit Neovim [CON]fig"})
-
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
-})
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[e", vim.diagnostic.goto_prev, { desc = "Go to next error" })

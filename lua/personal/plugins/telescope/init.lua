@@ -1,5 +1,4 @@
 return {
-  -- Fuzzy Finder (files, lsp, etc)
   { "nvim-telescope/telescope.nvim",
     version = "*",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -11,11 +10,11 @@ return {
         path_display = {
           truncate = 3,
         },
-        layout_strategy = "flex",
+        layout_strategy = "vertical",
         layout_config = {
-          horizontal = {
+          vertical = {
             preview_cutoff = 0,
-            preview_width = 0.75,
+            prompt_position = "top",
           },
         },
         file_ignore_patterns = {
@@ -24,24 +23,23 @@ return {
           -- "Images",
           -- "lib",
           -- "Styles",
-          -- "*.zip",
-          -- "*.gif",
-          -- "*.svg",
+          "*.zip",
+          "*.gif",
+          "*.svg",
           -- "*.csv",
           -- "*.ttf",
           -- "XeroCertificate",
+          "*.jmx",
+          "Content",
+          "*.cmd",
         },
       },
       config = function()
-        -- Enable telescope fzf native, if installed
         pcall(require("telescope").load_extension, "fzf")
       end
     },
   },
 
-  -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-  -- Only load if `make` is available. Make sure you have the system
-  -- requirements installed.
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     -- NOTE: If you are having trouble with this installation,
