@@ -30,7 +30,7 @@ return {
           -- "*.ttf",
           -- "XeroCertificate",
           "*.jmx",
-          "Content",
+          "^Content/",
           "*.cmd",
         },
       },

@@ -23,6 +23,17 @@ return {
   "tpope/vim-sleuth",
 
   { "windwp/nvim-autopairs", opts = {} },
+  { "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup({
+        opts = {
+          enable_close = true,
+          enable_rename = true,
+          enable_close_on_slash = false,
+        },
+      })
+    end,
+  },
 
   -- "gc" to comment visual regions/lines
   { "numToStr/Comment.nvim", opts = {} },
@@ -49,7 +60,7 @@ return {
   {
     "NoseferatuWKF/dijon.nvim",
     opts = {
-      vault = "C:/Users/Wan.WanAhmed/Documents/athena",
+      vault = "C:/Users/Wan.WanAhmed/athena",
     },
   },
 }

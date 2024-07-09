@@ -4,17 +4,26 @@ return {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
-      "windwp/nvim-ts-autotag",
     },
     config = function()
       require("nvim-treesitter.configs").setup {
-        ensure_installed = { "c", "cpp", "c_sharp", "go", "lua", "python", "rust", "tsx", "typescript", "vim", "java", "html" },
-        autotag = {
-          enable = true
+        ensure_installed = { 
+          "c",
+          "cpp",
+          "c_sharp",
+          "go",
+          "python",
+          "rust",
+          "tsx",
+          "typescript",
+          "vim",
+          "java",
+          "html",
+          "vimdoc",
         },
         auto_install = false,
         highlight = { enable = true },
-        indent = { enable = true, disable = { "python" } },
+        indent = { enable = true, disable = { "python", "html" } },
         incremental_selection = {
           enable = true,
           keymaps = {
