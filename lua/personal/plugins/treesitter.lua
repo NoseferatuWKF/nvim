@@ -2,16 +2,30 @@ return {
   {
     -- Highlight, edit, and navigate code
     "nvim-treesitter/nvim-treesitter",
+    build = "make",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
-      "windwp/nvim-ts-autotag",
     },
     config = function()
       -- [[ Configure Treesitter ]]
       -- See `:help nvim-treesitter`
       require("nvim-treesitter.configs").setup {
         -- Add languages to be installed here that you want installed for treesitter
-        ensure_installed = { "c", "cpp", "c_sharp", "go", "lua", "python", "rust", "tsx", "typescript", "vim", "java", "html" },
+        ensure_installed = {
+          "c",
+          "cpp",
+          "c_sharp",
+          "go",
+          "lua",
+          "python",
+          "rust",
+          "tsx",
+          "typescript",
+          "vim",
+          "java",
+          "html",
+          "vimdoc",
+        },
 
         autotag = {
           enable = true
@@ -21,7 +35,7 @@ return {
         auto_install = false,
 
         highlight = { enable = true },
-        indent = { enable = true, disable = { "python" } },
+        indent = { enable = true, disable = { "python", "html" } },
         incremental_selection = {
           enable = true,
           keymaps = {

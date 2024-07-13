@@ -9,7 +9,6 @@ return {
 
   -- Utils
   "nvim-lua/plenary.nvim",
-  "tpope/vim-surround",
   "christoomey/vim-tmux-navigator",
   
   -- show buffers as tabs
@@ -22,10 +21,18 @@ return {
   -- Detect tabstop and shiftwidth automatically
   "tpope/vim-sleuth",
 
-  { "windwp/nvim-autopairs", opts = {} },
-
-  -- "gc" to comment visual regions/lines
-  { "numToStr/Comment.nvim", opts = {} },
+  -- { "windwp/nvim-autopairs", opts = {} },
+  { "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup({
+        opts = {
+          enable_close = true,
+          enable_rename = true,
+          enable_close_on_slash = false,
+        }
+      })
+    end,
+  },
 
   { "mbbill/undotree",
     config = function()

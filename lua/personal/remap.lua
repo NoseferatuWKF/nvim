@@ -31,7 +31,7 @@ vim.keymap.set("v", "K", function()
 end, { expr = true })
 
 -- increment all numbers in a single line
-vim.keymap.set("v", "<leader>aa", [[::s/\d/\=submatch(0)+1/g<Left><Left>]])
+vim.keymap.set("v", "<leader>aa", [[:s/\d/\=submatch(0)+1/g<CR>]])
 
 -- replace word on cursor
 vim.keymap.set("n", "<leader>ru", [[:1, . s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - Upwards" })

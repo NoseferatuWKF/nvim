@@ -10,7 +10,7 @@ local compact = require("telescope.themes").get_dropdown({
 
 vim.keymap.set("n", "<leader><space>", function()
   require("telescope.builtin").buffers(compact)
-end, { desc = "[?] Find recently opened files" })
+end, { desc = "Search current buffers" })
 
 vim.keymap.set("n", "<leader>?", function()
   require("telescope.builtin").oldfiles(compact)
