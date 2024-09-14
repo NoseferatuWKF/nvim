@@ -35,9 +35,6 @@ return {
     end,
   },
 
-  -- "gc" to comment visual regions/lines
-  { "numToStr/Comment.nvim", opts = {} },
-
   { "mbbill/undotree",
     config = function()
       vim.g.undotree_WindowLayout = 2
