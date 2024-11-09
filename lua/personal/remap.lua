@@ -1,23 +1,6 @@
+-- See `:help vim.keymap.set()`
 -- Netrw
 vim.keymap.set("n", "<leader>nt", vim.cmd.Ex, { desc = "[N]e[T]rw" })
-
--- Buffers
-vim.keymap.set("n", "<C-x>", vim.cmd.bd)
-vim.keymap.set("n", "<C-n>", function()
-  if vim.v.count > 0 then
-    return vim.cmd.b(vim.v.count)
-  else
-    return vim.cmd.bn()
-  end
-end, { desc = "[N]ext buffer" })
-
-vim.keymap.set("n", "<C-p>", function()
-  if vim.v.count > 0 then
-    return vim.cmd.b(vim.v.count)
-  else
-    return vim.cmd.bp()
-  end
-end, { desc = "[P]rev buffer" })
 
 -- moving lines
 vim.keymap.set("v", "J", function()
@@ -34,8 +17,8 @@ end, { expr = true })
 vim.keymap.set("v", "<leader>aa", [[:s/\d/\=submatch(0)+1/g<CR>]])
 
 -- replace word on cursor
-vim.keymap.set("n", "<leader>ru", [[:1, . s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - Upwards" })
 vim.keymap.set("n", "<leader>rr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - All" })
+vim.keymap.set("n", "<leader>ru", [[:1, . s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - Upwards" })
 vim.keymap.set("n", "<leader>rd", [[:., $ s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Cursor Replace Word - Downwards" })
 
 -- Notorious keybinds from ThePrimeagen
@@ -46,23 +29,21 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], { desc = "Yank into system clipboard"})
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Immutable Paste"})
 
 -- Keymaps for better default experience
--- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- Terminal mode
+-- Terminal mode remap
 vim.keymap.set("t", "<esc>", "<C-\\><C-n>")
 
 -- edit config from anywhere while in vim
 vim.keymap.set("n", "<leader>con", function()
-  vim.cmd.edit("~/.dotfiles/nvim/.config/nvim/init.lua")
+  vim.cmd.edit("~/.dotfiles/nvim/.config/nvim")
 end, { desc = "Edit Neovim [CON]fig"})
 
 -- [[ Highlight on yank ]]
@@ -80,4 +61,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.keymap.set("n", "[e", vim.diagnostic.goto_prev, { desc = "Go to next error" })
 vim.keymap.set("n", "]e", vim.diagnostic.goto_next, { desc = "Go to prev error" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Hover error" })
--- vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Error list" })

@@ -1,5 +1,3 @@
--- [[ Setting options ]]
-
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
@@ -21,7 +19,6 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.wrap = false
 vim.o.scrolloff = 10
--- vim.o.colorcolumn = "80"
 -- Enable mouse mode
 vim.o.mouse = 'a'
 -- Sync clipboard between OS and Neovim.
@@ -44,7 +41,6 @@ vim.o.timeout = true
 vim.o.timeoutlen = 300
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
--- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 -- Show horizontal line on cursor so that you are not lost
 vim.o.cursorline = true
@@ -67,24 +63,22 @@ vim.api.nvim_create_autocmd({"TermOpen"}, {
   end
 })
 
--- Hover float windows borders
--- h nvim_open_win
+-- See `:h nvim_open_win()`
 local _border = "rounded"
 
--- h lsp
+-- See `:h lsp`
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
   vim.lsp.handlers.hover, {
     border = _border
   }
 )
-
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
   vim.lsp.handlers.signature_help, {
     border = _border
   }
 )
 
--- h vim.diagnostic.config()
+-- See `h vim.diagnostic.config()`
 vim.diagnostic.config({
   float = { border = _border }
 })

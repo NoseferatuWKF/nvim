@@ -1,7 +1,5 @@
 return {
-  {
-    -- Highlight, edit, and navigate code
-    "nvim-treesitter/nvim-treesitter",
+  { "nvim-treesitter/nvim-treesitter",
     build = "make",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
