@@ -2,6 +2,7 @@
 local actions = require("telescope.actions")
 local compact = {
   attach_mappings = function(_, map)
+    map({"i", "n"}, "<C-a>", actions.select_all)
     map({"i", "n"}, "<C-x>", actions.delete_buffer)
     return true
   end,
@@ -25,7 +26,6 @@ vim.keymap.set("n", "<leader>?", function()
 end, { desc = "[?] Find recently opened files" })
 
 vim.keymap.set("n", "<leader>/", function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
   require("telescope.builtin").current_buffer_fuzzy_find(compact)
 end, { desc = "[/] Fuzzily search in current buffer" })
 
