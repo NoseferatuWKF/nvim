@@ -55,9 +55,6 @@ return {
           -- Ensure the servers above are installed
           local mason_lspconfig = require("mason-lspconfig")
 
-          -- See `:h lspconfig-highlight`
-          require("lspconfig.ui.windows").default_options.border = "rounded"
-
           mason_lspconfig.setup {
             ensure_installed = vim.tbl_keys(servers),
           }
